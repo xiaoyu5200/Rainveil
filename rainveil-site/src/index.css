@@ -21,6 +21,7 @@
 
   /* radius */
   --radius-pill: 999px;
+  --radius-check: 8px;
 
   /* font */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;

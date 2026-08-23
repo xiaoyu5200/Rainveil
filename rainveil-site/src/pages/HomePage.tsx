@@ -13,6 +13,7 @@ export function HomePage() {
     <Container>
       <Section
         className="py-16 text-center"
+        as="h1"
         kicker="Rainveil · 雨幕"
         title={<>进入雨幕，开始你的<em className="font-serif-accent italic">冒险</em></>}
         subtitle={site.tagline}
@@ -35,7 +36,7 @@ export function HomePage() {
       <Section kicker="玩法速览" title="正在展开的世界">
         <div className="grid gap-4 md:grid-cols-3">
           {modes.slice(0, 3).map((m) => (
-            <Card key={m.id}>
+            <Card key={m.id} as="article">
               <h3 className="font-medium text-ink">{m.title}</h3>
               <p className="text-mist">{m.desc}</p>
             </Card>
@@ -46,7 +47,7 @@ export function HomePage() {
       <Section kicker="公告" title="最新动态">
         {announcements.slice(0, 3).map((a) => (
           <p key={a.title} className="text-sm text-mist">
-            <span className="mr-2 text-soft">{a.date}</span>
+            <span className="mr-2 text-mist">{a.date}</span>
             {a.title}
           </p>
         ))}

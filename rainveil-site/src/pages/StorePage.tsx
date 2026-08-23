@@ -29,7 +29,7 @@ export function StorePage() {
           {plans.map((p) => {
             const featured = p.id === featuredId
             return (
-              <Card key={p.id} shadow={featured ? 'float' : 'whisper'}>
+              <Card key={p.id} as="article" shadow={featured ? 'float' : 'whisper'}>
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <h3 className="text-lg font-semibold text-ink">{p.name}</h3>
                   {featured ? <Badge tone="signal">推荐</Badge> : null}
@@ -70,7 +70,7 @@ export function StorePage() {
             <caption className="sr-only">雨幕赞助方案的权益对照表</caption>
             <thead>
               <tr className="border-b border-edge">
-                <th scope="col" className="px-6 py-4 font-medium text-soft">权益</th>
+                <th scope="col" className="px-6 py-4 font-medium text-mist">权益</th>
                 {plans.map((p) => (
                   <th key={p.id} scope="col" className="px-6 py-4 text-center font-medium text-ink">
                     {p.name}
@@ -106,7 +106,7 @@ export function StorePage() {
           <ul className="divide-y divide-edge">
             {site.community.map((c) => (
               <li key={c.label} className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0">
-                <span className="text-sm text-soft">{c.label}</span>
+                <span className="text-sm text-mist">{c.label}</span>
                 <span className="font-medium text-ink">{c.value}</span>
               </li>
             ))}

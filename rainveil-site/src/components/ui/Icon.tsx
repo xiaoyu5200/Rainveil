@@ -17,6 +17,7 @@ export type IconName =
   | 'clock'
   | 'gift'
   | 'globe'
+  | 'menu'
 
 const paths: Record<IconName, ReactNode> = {
   copy: (
@@ -100,6 +101,13 @@ const paths: Record<IconName, ReactNode> = {
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </>
+  ),
+  menu: (
+    <>
+      <line x1="4" y1="7" x2="20" y2="7" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="17" x2="20" y2="17" />
     </>
   ),
 }

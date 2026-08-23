@@ -19,7 +19,7 @@ export function ModesPage() {
       >
         <div className="grid gap-4 md:grid-cols-2">
           {modes.map((m) => (
-            <Card key={m.id}>
+            <Card key={m.id} as="article">
               <h3 className="text-lg font-semibold text-ink">{m.title}</h3>
               <p className="mt-2 text-mist">{m.desc}</p>
               <ul className="mt-4 space-y-2">

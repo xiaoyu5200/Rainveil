@@ -1,8 +1,56 @@
+import { site } from '../content/site'
+import { modes } from '../content/modes'
+import { announcements } from '../content/announcements'
+import { Section } from '../components/ui/Section'
+import { Card } from '../components/ui/Card'
+import { StatTile } from '../components/ui/StatTile'
+import { CopyIp } from '../components/ui/CopyIp'
+import { PillButton } from '../components/ui/PillButton'
+import { Container } from '../components/ui/Container'
+
 export function HomePage() {
   return (
-    <section className="rounded-2xl border border-edge bg-cloud p-8 shadow-whisper">
-      <h1 className="text-2xl font-semibold text-ink">首页</h1>
-      <p className="mt-2 text-mist">首页内容建设中，敬请期待。</p>
-    </section>
+    <Container>
+      <Section
+        className="py-16 text-center"
+        kicker="Rainveil · 雨幕"
+        title={<>进入雨幕，开始你的<em className="font-serif-accent italic">冒险</em></>}
+        subtitle={site.tagline}
+      >
+        <div className="flex flex-col items-center gap-4">
+          <CopyIp ip={site.ip} />
+          <PillButton variant="primary">加入服务器</PillButton>
+        </div>
+      </Section>
+
+      <Section kicker="服务器概览" title="一屏了解">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <StatTile label="版本" value={site.version} />
+          <StatTile label="类型" value={site.type} />
+          <StatTile label="地址" value={site.ip} />
+          <StatTile label="在线" value="占位" />
+        </div>
+      </Section>
+
+      <Section kicker="玩法速览" title="正在展开的世界">
+        <div className="grid gap-4 md:grid-cols-3">
+          {modes.slice(0, 3).map((m) => (
+            <Card key={m.id}>
+              <h3 className="font-medium text-ink">{m.title}</h3>
+              <p className="text-mist">{m.desc}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section kicker="公告" title="最新动态">
+        {announcements.slice(0, 3).map((a) => (
+          <p key={a.title} className="text-sm text-mist">
+            <span className="mr-2 text-soft">{a.date}</span>
+            {a.title}
+          </p>
+        ))}
+      </Section>
+    </Container>
   )
 }

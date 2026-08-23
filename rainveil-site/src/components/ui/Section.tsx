@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 
 export function Section({
+  kicker,
   title,
   subtitle,
   accent,
@@ -8,7 +9,8 @@ export function Section({
   className,
   divider = false,
 }: {
-  title: string
+  kicker?: string
+  title: ReactNode
   subtitle?: string
   accent?: string
   children?: ReactNode
@@ -18,6 +20,9 @@ export function Section({
   return (
     <section className={divider ? `border-t border-edge ${className ?? ''}` : className}>
       <header className="mb-8 max-w-2xl">
+        {kicker ? (
+          <p className="mb-3 text-xs font-medium uppercase tracking-wide text-soft">{kicker}</p>
+        ) : null}
         <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
           {title}
           {accent ? (

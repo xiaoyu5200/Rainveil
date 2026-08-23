@@ -5,6 +5,6 @@ import { App } from './App'
 describe('App', () => {
   it('renders NavBar brand', () => {
     render(<App />)
-    expect(screen.getByText(/Rainveil/)).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /Rainveil/ })).toBeInTheDocument()
   })
 })

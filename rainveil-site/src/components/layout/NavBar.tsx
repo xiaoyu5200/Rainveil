@@ -1,24 +1,31 @@
-import { Link } from 'react-router'
-
+import { NavLink } from 'react-router'
+const links = [
+  { to: '/', label: '首页' },
+  { to: '/modes', label: '玩法' },
+  { to: '/guide', label: '开始游玩' },
+  { to: '/store', label: '商店' },
+]
 export function NavBar() {
   return (
-    <header className="sticky top-0 z-10 border-b border-edge bg-cloud/95 backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-5xl items-center gap-8 px-6">
-        <Link to="/" className="font-serif-accent text-2xl font-semibold text-ink">
-          Rainveil
-        </Link>
-        <nav className="flex items-center gap-6 text-sm text-mist">
-          <Link to="/modes" className="transition-colors hover:text-ink">
-            玩法模式
-          </Link>
-          <Link to="/guide" className="transition-colors hover:text-ink">
-            新人指南
-          </Link>
-          <Link to="/store" className="transition-colors hover:text-ink">
-            赞助商店
-          </Link>
-        </nav>
+    <nav aria-label="主导航">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <NavLink to="/" className="text-ink font-semibold tracking-tight">Rainveil · 雨幕</NavLink>
+        <div className="flex items-center gap-1 rounded-pill bg-cloud px-2 py-1.5 shadow-whisper">
+          {links.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              className={({ isActive }) =>
+                `rounded-pill px-4 py-2 text-sm font-medium transition-colors ${
+                  isActive ? 'bg-ink text-cloud' : 'text-mist hover:text-ink'
+                }`
+              }
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </div>
       </div>
-    </header>
+    </nav>
   )
 }

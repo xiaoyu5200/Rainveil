@@ -19,6 +19,11 @@ export interface RuleGroup {
   items: string[]
 }
 
+export interface Faq {
+  q: string
+  a: string
+}
+
 export interface Plan {
   id: string
   name: string

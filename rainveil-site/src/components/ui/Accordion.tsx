@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useId, useState, type ReactNode } from 'react'
 import { Icon } from './Icon'
 
 export interface AccordionItem {
@@ -17,6 +17,7 @@ export function Accordion({
   defaultOpenIndex?: number | null
   onToggle?: (nextIndex: number | null) => void
 }) {
+  const baseId = useId()
   const [internalOpen, setInternalOpen] = useState<number | null>(defaultOpenIndex)
   const isControlled = openIndex !== undefined
   const open = isControlled ? openIndex : internalOpen
@@ -31,10 +32,10 @@ export function Accordion({
     <div className="divide-y divide-edge overflow-hidden rounded-check border border-edge bg-cloud shadow-whisper">
       {items.map((item, index) => {
         const isOpen = open === index
-        const buttonId = `accordion-button-${index}`
-        const panelId = `accordion-panel-${index}`
+        const buttonId = `${baseId}-button-${index}`
+        const panelId = `${baseId}-panel-${index}`
         return (
-          <div key={item.title}>
+          <div key={`${index}-${item.title}`}>
             <h3 className="m-0">
               <button
                 type="button"

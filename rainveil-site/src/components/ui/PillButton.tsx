@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-export function PillButton({ children, variant = 'primary', ...props }: {
+export function PillButton({ children, variant = 'primary', className, ...props }: {
   children: ReactNode; variant?: 'primary' | 'secondary' | 'ghost'
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const styles = {
@@ -8,7 +8,7 @@ export function PillButton({ children, variant = 'primary', ...props }: {
     ghost: 'text-mist hover:text-ink',
   }[variant]
   return (
-    <button {...props} className={`inline-flex items-center gap-2 rounded-pill px-6 py-3 text-sm font-medium transition-colors ${styles}`}>
+    <button {...props} className={`inline-flex items-center gap-2 rounded-pill px-6 py-3 text-sm font-medium transition-colors ${styles} ${className ?? ''}`}>
       {children}
     </button>
   )

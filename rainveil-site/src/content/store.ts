@@ -1,5 +1,6 @@
 import type { Plan } from './types'
 
+// 占位：商店方案（档位 / 定价 / 权益）待用户提供（来源：设计文档 §12「商店方案」）
 export const plans: Plan[] = [
   {
     id: 'adventurer',

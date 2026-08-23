@@ -1,5 +1,6 @@
 import type { Faq } from './types'
 
+// 占位：进服要求（正版 / 离线、资源包、版本限制）相关问答待用户提供（来源：设计文档 §12「进服要求」）
 export const faqs: Faq[] = [
   {
     q: '需要正版账号吗',

@@ -1,5 +1,6 @@
 import type { RuleGroup } from './types'
 
+// 占位：规则要点（通用 / 游戏 / 聊天 / 违规处理）待用户提供（来源：设计文档 §12）
 export const ruleGroups: RuleGroup[] = [
   {
     title: '通用规则',

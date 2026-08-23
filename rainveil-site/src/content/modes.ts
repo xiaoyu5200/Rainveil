@@ -1,5 +1,6 @@
 import type { Mode } from './types'
 
+// 占位：玩法明细（主线 / 任务 / 副本 / 经济 / 领地 / 商店 / 公会）待用户提供（来源：设计文档 §12）
 export const modes: Mode[] = [
   {
     id: 'quest',

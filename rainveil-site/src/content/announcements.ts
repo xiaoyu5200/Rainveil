@@ -1,5 +1,6 @@
 import type { Announcement } from './types'
 
+// 占位：公告内容（首屏 1-3 条）待用户提供（来源：设计文档 §12「公告内容」）
 export const announcements: Announcement[] = [
   {
     date: '2026-08-20',

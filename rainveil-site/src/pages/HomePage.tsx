@@ -13,7 +13,7 @@ export function HomePage() {
   return (
     <Container>
       <Section
-        className="py-16 text-center"
+        className="flex min-h-[70vh] flex-col items-center justify-center py-16 text-center"
         as="h1"
         kicker="雨幕"
         title={<>进入 Rainveil，开始你的<em className="font-serif-accent italic">冒险</em></>}

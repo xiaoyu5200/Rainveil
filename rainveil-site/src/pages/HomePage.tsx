@@ -27,11 +27,10 @@ export function HomePage() {
       </Section>
 
       <Section kicker="服务器概览" title="一屏了解">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           <StatTile label="版本" value={site.version} />
           <StatTile label="类型" value={site.type} />
           <StatTile label="地址" value={site.ip} />
-          <StatTile label="在线" value="占位" />
         </div>
       </Section>
 

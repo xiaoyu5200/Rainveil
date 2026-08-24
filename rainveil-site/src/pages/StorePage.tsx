@@ -20,10 +20,10 @@ export function StorePage() {
         kicker="商店"
         title={
           <span>
-            选择一个方案来支持<em className="font-serif-accent italic">雨幕</em>
+            选择一个方案来支持<em className="font-serif-accent italic">Rainveil</em>
           </span>
         }
-        subtitle="每一份赞助都会直接支持服务器运营，让雨幕走得更远。"
+        subtitle="每一份赞助都会直接支持服务器运营，让Rainveil走得更远。"
       >
         <div className="grid gap-6 md:grid-cols-2">
           {plans.map((p) => {
@@ -67,7 +67,7 @@ export function StorePage() {
       >
         <div className="overflow-x-auto rounded-check border border-edge bg-cloud shadow-whisper">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
-            <caption className="sr-only">雨幕赞助方案的权益对照表</caption>
+            <caption className="sr-only">Rainveil赞助方案的权益对照表</caption>
             <thead>
               <tr className="border-b border-edge">
                 <th scope="col" className="px-6 py-4 font-medium text-mist">权益</th>

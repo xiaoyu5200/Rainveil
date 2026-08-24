@@ -7,7 +7,7 @@ export function NotFoundPage() {
       <div className="py-16 text-center">
         <h1 className="font-serif-accent italic text-6xl text-ink">404</h1>
         <p className="mt-4 text-lg text-mist">这片区块尚未生成</p>
-        <p className="mt-1 text-sm text-mist">你要找的页面已被雨幕吞没，不妨回到入口处重新探索。</p>
+        <p className="mt-1 text-sm text-mist">你要找的页面已被 Rainveil 吞没，不妨回到入口处重新探索。</p>
         <div className="mt-8">
           <Link
             to="/"

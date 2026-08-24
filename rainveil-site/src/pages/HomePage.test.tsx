@@ -17,7 +17,7 @@ function renderHome() {
 describe('HomePage', () => {
   it('shows tagline and server ip', () => {
     renderHome()
-    expect(screen.getByText(/Rainveil/)).toBeInTheDocument()
+    expect(screen.getAllByText(/Rainveil/).length).toBeGreaterThanOrEqual(1)
     expect(screen.getAllByText('mc.xiaoyu.wiki').length).toBeGreaterThanOrEqual(1)
   })
 })

@@ -32,7 +32,7 @@ const steps = [
     title: '填写地址并进入',
     body: (
       <>
-        将服务器地址填写为 <span className="font-mono text-ink">{site.ip}</span>，完成后即可加入雨幕。
+        将服务器地址填写为 <span className="font-mono text-ink">{site.ip}</span>，完成后即可加入Rainveil。
       </>
     ),
   },
@@ -46,10 +46,10 @@ export function GuidePage() {
         kicker="开始游玩"
         title={
           <span>
-            三步进入<em className="font-serif-accent italic">雨幕</em>
+            三步进入<em className="font-serif-accent italic">Rainveil</em>
           </span>
         }
-        subtitle="从确认版本到加入服务器，三步开启你的雨幕之旅。"
+        subtitle="从确认版本到加入服务器，三步开启你的Rainveil之旅。"
       >
         <ol className="space-y-5">
           {steps.map((s, i) => (

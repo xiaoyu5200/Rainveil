@@ -1,7 +1,7 @@
 import type { SiteInfo } from './types'
 
 export const site: SiteInfo = {
-  name: 'Rainveil · 雨幕',
+  name: 'Rainveil',
   version: 'Java 1.21.11',
   type: '生存 RPG',
   ip: 'mc.xiaoyu.wiki',

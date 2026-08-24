@@ -12,10 +12,10 @@ export function ModesPage() {
         kicker="玩法"
         title={
           <span>
-            在雨幕里<em className="font-serif-accent italic">体验</em>每一种玩法
+            在Rainveil里<em className="font-serif-accent italic">体验</em>每一种玩法
           </span>
         }
-        subtitle="主线、领地、副本与经济，构成雨幕世界的四大支柱。"
+        subtitle="主线、领地、副本与经济，构成Rainveil世界的四大支柱。"
       >
         <div className="grid gap-4 md:grid-cols-2">
           {modes.map((m) => (

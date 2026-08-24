@@ -16,8 +16,8 @@ export function HomePage() {
       <Section
         className="py-16 text-center"
         as="h1"
-        kicker="Rainveil · 雨幕"
-        title={<>进入雨幕，开始你的<em className="font-serif-accent italic">冒险</em></>}
+        kicker="Rainveil"
+        title={<>进入 Rainveil，开始你的<em className="font-serif-accent italic">冒险</em></>}
         subtitle={site.tagline}
       >
         <div className="flex flex-col items-center gap-4">

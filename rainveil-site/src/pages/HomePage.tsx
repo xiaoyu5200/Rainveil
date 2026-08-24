@@ -25,7 +25,7 @@ export function HomePage() {
         </div>
       </Section>
 
-      <Section kicker="玩法速览" title="正在展开的世界">
+      <Section kicker="玩法速览" title="多种玩法，待你探索">
         <div className="grid gap-4 md:grid-cols-3">
           {modes.slice(0, 3).map((m) => (
             <Card key={m.id} as="article">

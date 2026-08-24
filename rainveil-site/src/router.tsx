@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router'
 import { AppLayout } from './components/layout/AppLayout'
 import { HomePage } from './pages/HomePage'
 import { ModesPage } from './pages/ModesPage'
-import { GuidePage } from './pages/GuidePage'
 import { StorePage } from './pages/StorePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -12,7 +11,6 @@ export const routes = [
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/modes', element: <ModesPage /> },
-      { path: '/guide', element: <GuidePage /> },
       { path: '/store', element: <StorePage /> },
       { path: '*', element: <NotFoundPage /> },
     ],

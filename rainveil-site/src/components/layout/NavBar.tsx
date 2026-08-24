@@ -5,7 +5,6 @@ import { Icon } from '../ui/Icon'
 const links = [
   { to: '/', label: '首页' },
   { to: '/modes', label: '玩法' },
-  { to: '/guide', label: '开始游玩' },
   { to: '/store', label: '商店' },
 ]
 

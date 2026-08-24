@@ -22,7 +22,7 @@ export function NavBar() {
     <nav aria-label="主导航">
       <div className="mx-auto max-w-6xl px-4 py-4">
         <div className="flex items-center justify-between">
-          <NavLink to="/" className="text-ink font-semibold tracking-tight">Rainveil</NavLink>
+          <NavLink to="/" className="text-ink font-semibold tracking-tight">Rainveil · 雨幕</NavLink>
 
           <div className="hidden items-center gap-1 rounded-pill bg-cloud px-2 py-1.5 shadow-whisper md:flex">
             {links.map((l) => (

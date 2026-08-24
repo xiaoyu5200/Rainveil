@@ -67,12 +67,6 @@ export function HomePage() {
         ))}
       </Section>
 
-      <Section className="py-16 text-center" kicker="踏上旅程" title="准备好开启冒险了吗">
-        <div className="flex flex-col items-center gap-4">
-          <CopyIp ip={site.ip} />
-          <PillButton variant="primary">加入服务器</PillButton>
-        </div>
-      </Section>
     </Container>
   )
 }

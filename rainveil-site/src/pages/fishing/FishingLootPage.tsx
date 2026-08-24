@@ -6,23 +6,7 @@ import { Block, Pixel } from './_shared'
 export function FishingLootPage() {
   return (
     <Block title="特殊战利品">
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card as="article">
-          <div className="mb-2 flex items-center gap-2">
-            <h3 className="text-lg font-semibold text-ink">{loot.radioactive.name}</h3>
-            <Badge tone="citrus">垃圾</Badge>
-          </div>
-          <div className="flex items-center gap-3">
-            <Pixel
-              src={`/fishing/fish/${loot.radioactive.texture}.png`}
-              alt={loot.radioactive.name}
-              className="h-14 w-14 rounded-check border border-edge/70 bg-sky/60 p-1"
-            />
-            <p className="text-sm text-mist">{loot.radioactive.desc}</p>
-          </div>
-        </Card>
-
-        <Card as="article" className="md:col-span-2">
+      <Card as="article">
           <div className="mb-4 flex items-center gap-3">
             <Pixel
               src="/fishing/enchanted_book.png"
@@ -58,8 +42,7 @@ export function FishingLootPage() {
               </div>
             ))}
           </div>
-        </Card>
-      </div>
+      </Card>
     </Block>
   )
 }

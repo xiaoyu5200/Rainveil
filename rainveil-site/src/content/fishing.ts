@@ -218,7 +218,6 @@ export const market = {
     { name: '河豚', price: 10 },
     { name: '鲑鱼', price: 10 },
     { name: '热带鱼', price: 10 },
-    { name: '纸（CMData:999）', price: 5 },
   ],
 }
 

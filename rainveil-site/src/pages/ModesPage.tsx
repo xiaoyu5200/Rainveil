@@ -1,8 +1,6 @@
 import { Link } from 'react-router'
-import { modes } from '../content/modes'
 import { Container } from '../components/ui/Container'
 import { Section } from '../components/ui/Section'
-import { Card } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
 import { Icon } from '../components/ui/Icon'
 
@@ -17,25 +15,8 @@ export function ModesPage() {
             在Rainveil里<em className="font-serif-accent italic">体验</em>每一种玩法
           </span>
         }
-        subtitle="主线、领地、副本与经济，构成Rainveil世界的四大支柱。"
+        subtitle="当前开放的玩法。"
       >
-        <div className="grid gap-4 md:grid-cols-2">
-          {modes.map((m) => (
-            <Card key={m.id} as="article">
-              <h3 className="text-lg font-semibold text-ink">{m.title}</h3>
-              <p className="mt-2 text-mist">{m.desc}</p>
-              <ul className="mt-4 space-y-2">
-                {m.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-mist">
-                    <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-soft" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
-
         <Link
           to="/modes/fishing"
           className="group mt-4 flex items-center gap-4 rounded-check border border-edge bg-cloud p-6 shadow-whisper transition-shadow hover:shadow-float"

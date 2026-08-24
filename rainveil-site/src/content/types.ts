@@ -7,13 +7,6 @@ export interface SiteInfo {
   community: { label: string; value: string }[]
 }
 
-export interface Mode {
-  id: string
-  title: string
-  desc: string
-  features: string[]
-}
-
 export interface RuleGroup {
   title: string
   items: string[]

@@ -4,7 +4,6 @@ import { modes } from '../content/modes'
 import { announcements } from '../content/announcements'
 import { Section } from '../components/ui/Section'
 import { Card } from '../components/ui/Card'
-import { StatTile } from '../components/ui/StatTile'
 import { CopyIp } from '../components/ui/CopyIp'
 import { PillButton } from '../components/ui/PillButton'
 import { Icon } from '../components/ui/Icon'
@@ -21,16 +20,8 @@ export function HomePage() {
         subtitle={site.tagline}
       >
         <div className="flex flex-col items-center gap-4">
-          <CopyIp ip={site.ip} className="w-full max-w-xs" />
-          <PillButton variant="primary" className="w-full max-w-xs justify-center">加入服务器</PillButton>
-        </div>
-      </Section>
-
-      <Section kicker="服务器概览" title="一屏了解">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-          <StatTile label="版本" value={site.version} />
-          <StatTile label="类型" value={site.type} />
-          <StatTile label="地址" value={site.ip} />
+          <CopyIp ip={site.ip} />
+          <PillButton variant="primary">加入服务器</PillButton>
         </div>
       </Section>
 

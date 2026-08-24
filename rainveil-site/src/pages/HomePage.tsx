@@ -1,7 +1,6 @@
 import { Link } from 'react-router'
 import { site } from '../content/site'
 import { modes } from '../content/modes'
-import { announcements } from '../content/announcements'
 import { Section } from '../components/ui/Section'
 import { Card } from '../components/ui/Card'
 import { CopyIp } from '../components/ui/CopyIp'
@@ -47,15 +46,6 @@ export function HomePage() {
             <Icon name="arrow-right" className="h-4 w-4" />
           </Link>
         </div>
-      </Section>
-
-      <Section kicker="公告" title="最新动态">
-        {announcements.slice(0, 3).map((a) => (
-          <p key={a.title} className="text-sm text-mist">
-            <span className="mr-2 text-mist">{a.date}</span>
-            {a.title}
-          </p>
-        ))}
       </Section>
 
     </Container>

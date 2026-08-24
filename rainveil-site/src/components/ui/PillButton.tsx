@@ -3,7 +3,7 @@ export function PillButton({ children, variant = 'primary', className, ...props 
   children: ReactNode; variant?: 'primary' | 'secondary' | 'ghost'
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const styles = {
-    primary: 'bg-ink text-cloud hover:bg-black',
+    primary: 'bg-ink text-cloud hover:bg-ink/90',
     secondary: 'border border-edge bg-cloud text-ink hover:border-mist',
     ghost: 'text-mist hover:text-ink',
   }[variant]

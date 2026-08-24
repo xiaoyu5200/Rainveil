@@ -34,7 +34,7 @@ export function NavBar() {
 
           <button
             type="button"
-            className="inline-flex items-center gap-2 rounded-pill bg-cloud px-4 py-2 text-sm font-medium text-ink shadow-whisper md:hidden"
+            className="inline-flex items-center gap-2 rounded-pill bg-cloud px-4 py-2 text-sm font-medium text-ink shadow-whisper focus-visible:shadow-[var(--ring-focus)] md:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             onClick={() => setOpen((v) => !v)}

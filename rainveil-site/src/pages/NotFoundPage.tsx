@@ -11,7 +11,7 @@ export function NotFoundPage() {
         <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-pill bg-ink px-6 py-3 text-sm font-medium text-cloud transition-colors hover:bg-black"
+            className="inline-flex items-center gap-2 rounded-pill bg-ink px-6 py-3 text-sm font-medium text-cloud transition-colors hover:bg-ink/90"
           >
             回到首页
           </Link>

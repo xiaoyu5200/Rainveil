@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import { Icon } from './Icon'
 
 type CopyStatus = 'idle' | 'copied' | 'failed'
 
-export function CopyIp({ ip }: { ip: string }) {
+export function CopyIp({ ip, className }: { ip: string; className?: string }) {
   const [status, setStatus] = useState<CopyStatus>('idle')
   const timerRef = useRef<number | undefined>(undefined)
 
@@ -54,10 +55,13 @@ export function CopyIp({ ip }: { ip: string }) {
       type="button"
       onClick={copy}
       aria-live="polite"
-      className="inline-flex items-center gap-2 rounded-pill border border-edge bg-cloud px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-mist"
+      className={`relative inline-flex items-center justify-center rounded-pill border border-edge bg-cloud px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-mist ${className ?? ''}`}
     >
       <span className="font-mono">{ip}</span>
-      <span className="text-mist">{label}</span>
+      <span aria-hidden="true" className="absolute right-3 text-mist">
+        <Icon name="copy" className="h-4 w-4" />
+      </span>
+      <span className="sr-only">{label}</span>
     </button>
   )
 }

@@ -21,8 +21,8 @@ export function HomePage() {
         subtitle={site.tagline}
       >
         <div className="flex flex-col items-center gap-4">
-          <CopyIp ip={site.ip} />
-          <PillButton variant="primary">加入服务器</PillButton>
+          <CopyIp ip={site.ip} className="w-full max-w-xs" />
+          <PillButton variant="primary" className="w-full max-w-xs justify-center">加入服务器</PillButton>
         </div>
       </Section>
 

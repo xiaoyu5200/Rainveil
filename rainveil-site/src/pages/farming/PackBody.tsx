@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import type { ContentPack, PackItem } from '../../content/packTypes'
 import { ALL_ITEMS } from '../../content/allItems'
+import { coalesceRecipes } from '../../content/coalesce'
 import { RecipeCard } from './RecipeCard'
 import { CookingPotCard } from './CookingPotCard'
 
@@ -66,7 +67,7 @@ export function PackBody({ pack }: { pack: ContentPack }) {
           <h2 className="mb-2 text-xl font-semibold text-ink">合成表</h2>
           <p className="mb-4 -mt-2 text-sm text-mist">该内容包的主要工作台/熔炉/营火/锻造台配方。</p>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {pack.recipes.map((r) => (
+            {coalesceRecipes(pack.recipes).map((r) => (
               <RecipeCard key={r.id} recipe={r} catalog={ALL_ITEMS} />
             ))}
           </div>

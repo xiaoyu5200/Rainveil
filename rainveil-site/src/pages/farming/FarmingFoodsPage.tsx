@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { foodCategories, tools, knives } from '../../content/farming'
 import { RECIPES } from '../../content/farmingRecipes'
 import { FARMING_COOKING } from '../../content/packs'
+import { coalesceRecipes } from '../../content/coalesce'
 import { Badge } from '../../components/ui/Badge'
 import { Block, DishCard } from './_shared'
 import { RecipeCard } from './RecipeCard'
@@ -22,8 +23,8 @@ const SHOWN_ELSEWHERE = new Set<string>([
   'farmersdelight:organic_compost',
 ])
 
-/** 剩余的基础加工与材料配方 */
-const MATERIAL_RECIPES = RECIPES.filter((r) => !SHOWN_ELSEWHERE.has(r.result))
+/** 剩余的基础加工与材料配方（熔炉/烟熏炉/营火 同结果合并为一张） */
+const MATERIAL_RECIPES = coalesceRecipes(RECIPES.filter((r) => !SHOWN_ELSEWHERE.has(r.result)))
 
 export function FarmingFoodsPage() {
   const [filter, setFilter] = useState<MethodFilter>('全部')

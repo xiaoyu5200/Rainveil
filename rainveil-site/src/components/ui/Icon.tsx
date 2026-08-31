@@ -18,6 +18,7 @@ export type IconName =
   | 'gift'
   | 'globe'
   | 'menu'
+  | 'search'
 
 const paths: Record<IconName, ReactNode> = {
   copy: (
@@ -108,6 +109,12 @@ const paths: Record<IconName, ReactNode> = {
       <line x1="4" y1="7" x2="20" y2="7" />
       <line x1="4" y1="12" x2="20" y2="12" />
       <line x1="4" y1="17" x2="20" y2="17" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.5" y2="16.5" />
     </>
   ),
 }

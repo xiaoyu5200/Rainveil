@@ -9,6 +9,7 @@ import { FishingTotemsPage } from './pages/fishing/FishingTotemsPage'
 import { FishingMarketPage } from './pages/fishing/FishingMarketPage'
 import { FishingLootPage } from './pages/fishing/FishingLootPage'
 import { FarmingLayout } from './pages/farming/FarmingLayout'
+import { AllPage } from './pages/farming/AllPage'
 import { FarmingCropsPage } from './pages/farming/FarmingCropsPage'
 import { FarmingEquipmentPage } from './pages/farming/FarmingEquipmentPage'
 import { FarmingFoodsPage } from './pages/farming/FarmingFoodsPage'
@@ -38,7 +39,8 @@ export const routes = [
         path: '/modes/farming',
         element: <FarmingLayout />,
         children: [
-          { index: true, element: <Navigate to="/modes/farming/crops" replace /> },
+          { index: true, element: <Navigate to="/modes/farming/all" replace /> },
+          { path: 'all', element: <AllPage /> },
           { path: 'crops', element: <FarmingCropsPage /> },
           { path: 'equipment', element: <FarmingEquipmentPage /> },
           { path: 'foods', element: <FarmingFoodsPage /> },

@@ -4,6 +4,7 @@ import { Icon } from '../../components/ui/Icon'
 import { allPacks } from '../../content/packs'
 
 const sections = [
+  { to: '/modes/farming/all', label: '全部' },
   { to: '/modes/farming/crops', label: '作物与土壤' },
   { to: '/modes/farming/equipment', label: '厨具与刀具' },
   { to: '/modes/farming/foods', label: '食谱图鉴' },

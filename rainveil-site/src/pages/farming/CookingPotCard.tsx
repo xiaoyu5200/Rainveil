@@ -39,7 +39,7 @@ export function CookingPotCard({ recipe, catalog = ITEMS }: { recipe: CookingRec
       </header>
 
       <div className="flex items-center justify-center gap-3">
-        <div className="grid grid-cols-2 gap-1.5">
+        <div className="grid grid-cols-3 gap-1.5">
           {Array.from({ length: 6 }, (_, i) => {
             const id = ing[i]
             return id ? <IngCell key={i} id={id} catalog={catalog} /> : <div key={i} className="h-10 w-10 flex-none rounded-check border border-dashed border-slate-400/50 bg-slate-200/70" />

@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react'
 import { Badge } from '../../components/ui/Badge'
 import { Icon } from '../../components/ui/Icon'
+import { RECIPES } from '../../content/farmingRecipes'
 import type { Crop, Dish, Knife, Tool } from '../../content/farming'
+import { RecipeGrid } from './RecipeCard'
 
 /** 像素风贴图，16x16 放大显示 */
 export function Pixel({
@@ -87,14 +89,25 @@ export function ToolCard({ tool }: { tool: Tool }) {
         ))}
       </ul>
       <div className="mt-4 rounded-check border border-edge/70 bg-sky/40 p-3">
-        <p className="mb-1.5 text-xs font-semibold text-ink">合成</p>
-        <div className="flex flex-wrap gap-1.5">
-          {tool.recipe.map((r) => (
-            <span key={r} className="rounded-pill bg-cloud px-2.5 py-1 text-xs text-mist">
-              {r}
-            </span>
-          ))}
-        </div>
+        {(RECIPES.find((r) => r.id === `farmersdelight:${tool.id}`) ?? null) ? (
+          <>
+            <p className="mb-2 text-xs font-semibold text-ink">合成表</p>
+            <div className="rounded-check bg-cloud p-2 shadow-whisper">
+              <RecipeGrid compact recipe={RECIPES.find((r) => r.id === `farmersdelight:${tool.id}`)!} />
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="mb-1.5 text-xs font-semibold text-ink">合成</p>
+            <div className="flex flex-wrap gap-1.5">
+              {tool.recipe.map((r) => (
+                <span key={r} className="rounded-pill bg-cloud px-2.5 py-1 text-xs text-mist">
+                  {r}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </article>
   )
@@ -102,6 +115,7 @@ export function ToolCard({ tool }: { tool: Tool }) {
 
 /** 刀具卡片 */
 export function KnifeCard({ knife }: { knife: Knife }) {
+  const recipe = RECIPES.find((r) => r.id === `farmersdelight:${knife.id}`) ?? null
   return (
     <article className="flex flex-col items-center rounded-check border border-edge bg-cloud p-5 text-center shadow-whisper">
       <Pixel src={`/farming/${knife.texture}`} alt={knife.name} className="h-14 w-14" />
@@ -116,24 +130,46 @@ export function KnifeCard({ knife }: { knife: Knife }) {
           <dd className="text-ink">{knife.durability}</dd>
         </div>
       </dl>
+      {recipe ? (
+        <div className="mt-4 w-full rounded-check border border-edge/70 bg-sky/30 p-2">
+          <p className="mb-2 text-xs font-semibold text-ink">合成表</p>
+          <div className="rounded-check bg-cloud p-2 shadow-whisper">
+            <RecipeGrid compact recipe={recipe} />
+          </div>
+        </div>
+      ) : null}
     </article>
   )
 }
 
 /** 菜肴卡片 */
 export function DishCard({ dish }: { dish: Dish }) {
+  const recipe = RECIPES.find((r) => r.id === `farmersdelight:${dish.id}`) ?? null
   return (
-    <article className="flex items-center gap-3 rounded-check border border-edge bg-cloud p-3.5 shadow-whisper">
-      <Pixel src={`/farming/${dish.texture}`} alt={dish.name} className="h-12 w-12" />
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          <h4 className="truncate font-medium text-ink">{dish.name}</h4>
-          {dish.effect ? <Badge tone="meadow">{dish.effect}</Badge> : null}
+    <article className="flex flex-col rounded-check border border-edge bg-cloud p-3.5 shadow-whisper">
+      <div className="flex items-center gap-3">
+        <Pixel src={`/farming/${dish.texture}`} alt={dish.name} className="h-12 w-12" />
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-1.5">
+            <h4 className="truncate font-medium text-ink">{dish.name}</h4>
+            {recipe ? <Badge tone="signal">工作台合成</Badge> : <Badge tone="citrus">厨锅烹饪</Badge>}
+            {dish.effect ? <Badge tone="meadow">{dish.effect}</Badge> : null}
+          </div>
+          <p className="mt-0.5 text-xs text-soft">
+            饥饿 {dish.nutrition} · 饱和 {dish.saturation}
+          </p>
         </div>
-        <p className="mt-0.5 text-xs text-soft">
-          饥饿 {dish.nutrition} · 饱和 {dish.saturation}
-        </p>
       </div>
+      {recipe ? (
+        <div className="mt-3 rounded-check border border-edge/70 bg-sky/30 p-2">
+          <p className="mb-2 text-xs font-semibold text-ink">合成表</p>
+          <div className="rounded-check bg-cloud p-2 shadow-whisper">
+            <RecipeGrid compact recipe={recipe} />
+          </div>
+        </div>
+      ) : (
+        <p className="mt-3 text-xs text-soft">放入厨锅（下方需热源）烹饪而成。</p>
+      )}
     </article>
   )
 }

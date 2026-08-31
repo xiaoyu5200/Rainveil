@@ -6,7 +6,6 @@ const sections = [
   { to: '/modes/farming/crops', label: '作物与土壤' },
   { to: '/modes/farming/equipment', label: '厨具与刀具' },
   { to: '/modes/farming/foods', label: '食谱图鉴' },
-  { to: '/modes/farming/crafting', label: '合成表' },
 ]
 
 function HeaderBlock() {

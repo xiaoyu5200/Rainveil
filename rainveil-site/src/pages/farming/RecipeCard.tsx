@@ -1,18 +1,20 @@
 import type { CraftingRecipe } from '../../content/farmingRecipes'
-import { ITEMS } from '../../content/farmingRecipes'
+import { ITEMS, type ItemInfo } from '../../content/farmingRecipes'
 import { Badge } from '../../components/ui/Badge'
 import { Icon } from '../../components/ui/Icon'
 
-function SlotCell({ id, size = 'h-12 w-12' }: { id: string | null; size?: string }) {
+type Catalog = Record<string, ItemInfo>
+
+function SlotCell({ id, size = 'h-12 w-12', catalog }: { id: string | null; size?: string; catalog: Catalog }) {
   if (!id) {
-    return <div className={`${size} flex-none rounded-check border border-dashed border-edge bg-sky/30`} />
+    return <div className={`${size} flex-none rounded-check border border-dashed border-slate-400/60 bg-slate-200/70`} />
   }
-  const info = ITEMS[id]
+  const info = catalog[id]
   if (!info) {
-    return <div className={`${size} flex-none rounded-check border border-edge bg-sky/60 p-1`} />
+    return <div className={`${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-1`} />
   }
   return (
-    <div className={`group relative ${size} flex-none rounded-check border border-edge bg-sky/60 p-1`}>
+    <div className={`group relative ${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-0.5`}>
       <img
         src={info.texture}
         alt={info.name}
@@ -26,12 +28,13 @@ function SlotCell({ id, size = 'h-12 w-12' }: { id: string | null; size?: string
   )
 }
 
-function InputGrid({ recipe }: { recipe: CraftingRecipe }) {
+function InputGrid({ recipe, compact, catalog }: { recipe: CraftingRecipe; compact?: boolean; catalog: Catalog }) {
+  const size = compact ? 'h-9 w-9' : 'h-12 w-12'
   if (recipe.type === 'crafting') {
     return (
       <div className="grid grid-cols-3 gap-1.5">
         {Array.from({ length: 9 }, (_, i) => (
-          <SlotCell key={i} id={recipe.grid[i] ?? null} />
+          <SlotCell key={i} id={recipe.grid[i] ?? null} size={size} catalog={catalog} />
         ))}
       </div>
     )
@@ -40,20 +43,21 @@ function InputGrid({ recipe }: { recipe: CraftingRecipe }) {
     return (
       <div className="grid grid-cols-3 gap-1.5">
         {recipe.grid.slice(0, 3).map((s, i) => (
-          <SlotCell key={i} id={s ?? null} />
+          <SlotCell key={i} id={s ?? null} size={size} catalog={catalog} />
         ))}
       </div>
     )
   }
   // smelting / smoking / campfire: single top input
-  return <SlotCell id={recipe.grid[0] ?? null} />
+  return <SlotCell id={recipe.grid[0] ?? null} size={size} catalog={catalog} />
 }
 
-function ResultSlot({ recipe }: { recipe: CraftingRecipe }) {
-  const info = ITEMS[recipe.result]
+function ResultSlot({ recipe, compact, catalog }: { recipe: CraftingRecipe; compact?: boolean; catalog: Catalog }) {
+  const info = catalog[recipe.result]
   const name = info?.name ?? recipe.name
+  const box = compact ? 'h-12 w-12' : 'h-16 w-16'
   return (
-    <div className="group relative h-16 w-16 flex-none rounded-check border-2 border-ink/15 bg-cloud p-1 shadow-whisper">
+    <div className={`group relative ${box} flex-none rounded-check border-2 border-slate-400/60 bg-slate-200 p-1 shadow-whisper`}>
       <img
         src={info?.texture}
         alt={name}
@@ -72,7 +76,21 @@ function ResultSlot({ recipe }: { recipe: CraftingRecipe }) {
   )
 }
 
-export function RecipeCard({ recipe }: { recipe: CraftingRecipe }) {
+/** 配方格子视图：原料格 → 箭头 → 结果（可独立嵌入卡片使用） */
+export function RecipeGrid({ recipe, compact, catalog = ITEMS }: { recipe: CraftingRecipe; compact?: boolean; catalog?: Catalog }) {
+  return (
+    <div className="flex items-center justify-center gap-2.5">
+      <InputGrid recipe={recipe} compact={compact} catalog={catalog} />
+      <div className="flex flex-col items-center gap-0.5 text-soft">
+        <Icon name="arrow-right" className="h-4 w-4" />
+        <span className="text-[11px]">产出</span>
+      </div>
+      <ResultSlot recipe={recipe} compact={compact} catalog={catalog} />
+    </div>
+  )
+}
+
+export function RecipeCard({ recipe, catalog = ITEMS }: { recipe: CraftingRecipe; catalog?: Catalog }) {
   return (
     <article className="flex flex-col rounded-check border border-edge bg-cloud p-5 shadow-whisper transition-shadow hover:shadow-float">
       <header className="mb-4 flex items-center gap-2">
@@ -82,14 +100,7 @@ export function RecipeCard({ recipe }: { recipe: CraftingRecipe }) {
         </Badge>
       </header>
 
-      <div className="flex items-center justify-center gap-3">
-        <InputGrid recipe={recipe} />
-        <div className="flex flex-col items-center gap-1 text-soft">
-          <Icon name="arrow-right" className="h-5 w-5" />
-          <span className="text-[11px]">产出</span>
-        </div>
-        <ResultSlot recipe={recipe} />
-      </div>
+      <RecipeGrid recipe={recipe} catalog={catalog} />
 
       <p className="mt-4 text-center text-xs text-soft">
         {recipe.shapeless ? '无序合成，原料可任意摆放' : '按上方布局摆放原料即可合成'}

@@ -1,7 +1,11 @@
 import { crops, wildCrops, soil } from '../../content/farming'
+import { RECIPES } from '../../content/farmingRecipes'
 import { Card } from '../../components/ui/Card'
 import { Badge } from '../../components/ui/Badge'
 import { Block, CropCard, Pixel } from './_shared'
+import { RecipeGrid } from './RecipeCard'
+
+const organicCompostRecipe = RECIPES.find((r) => r.id === 'farmersdelight:organic_compost')
 
 export function FarmingCropsPage() {
   return (
@@ -51,14 +55,20 @@ export function FarmingCropsPage() {
             </div>
             <p className="text-sm text-mist">{soil.compost.desc}</p>
             <div className="mt-4 rounded-check border border-edge/70 bg-sky/40 p-3">
-              <p className="mb-1.5 text-xs font-semibold text-ink">合成</p>
-              <div className="flex flex-wrap gap-1.5">
-                {soil.compost.recipe.map((r) => (
-                  <span key={r} className="rounded-pill bg-cloud px-2.5 py-1 text-xs text-mist">
-                    {r}
-                  </span>
-                ))}
-              </div>
+              <p className="mb-2 text-xs font-semibold text-ink">合成表</p>
+              {organicCompostRecipe ? (
+                <div className="rounded-check bg-cloud p-2 shadow-whisper">
+                  <RecipeGrid compact recipe={organicCompostRecipe} />
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-1.5">
+                  {soil.compost.recipe.map((r) => (
+                    <span key={r} className="rounded-pill bg-cloud px-2.5 py-1 text-xs text-mist">
+                      {r}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </Card>
 

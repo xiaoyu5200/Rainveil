@@ -43,6 +43,33 @@ export function ModesPage() {
             </span>
           </div>
         </Link>
+
+        <Link
+          to="/modes/farming"
+          className="group mt-4 flex items-center gap-4 rounded-check border border-edge bg-cloud p-6 shadow-whisper transition-shadow hover:shadow-float"
+        >
+          <div className="flex flex-none items-center gap-1.5">
+            {['cabbage', 'tomato', 'onion'].map((crop) => (
+              <img
+                key={crop}
+                src={`/farming/item/${crop}.png`}
+                alt={crop}
+                className="h-14 w-14 flex-none rounded-check border border-edge/70 bg-sky/60 object-contain p-1 [image-rendering:pixelated]"
+              />
+            ))}
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-ink">农夫乐事</h3>
+              <Badge tone="citrus">已开放</Badge>
+            </div>
+            <p className="mt-1 text-mist">四种作物、六把厨刀、四种厨具，以及数十道附带滋养效果的家常菜。</p>
+            <span className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-signal">
+              查看完整攻略
+              <Icon name="arrow-right" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </div>
+        </Link>
       </Section>
     </Container>
   )

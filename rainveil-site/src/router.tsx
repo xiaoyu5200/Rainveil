@@ -8,6 +8,11 @@ import { FishingEquipmentPage } from './pages/fishing/FishingEquipmentPage'
 import { FishingTotemsPage } from './pages/fishing/FishingTotemsPage'
 import { FishingMarketPage } from './pages/fishing/FishingMarketPage'
 import { FishingLootPage } from './pages/fishing/FishingLootPage'
+import { FarmingLayout } from './pages/farming/FarmingLayout'
+import { FarmingCropsPage } from './pages/farming/FarmingCropsPage'
+import { FarmingEquipmentPage } from './pages/farming/FarmingEquipmentPage'
+import { FarmingFoodsPage } from './pages/farming/FarmingFoodsPage'
+import { FarmingCraftingPage } from './pages/farming/FarmingCraftingPage'
 import { StorePage } from './pages/StorePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -27,6 +32,17 @@ export const routes = [
           { path: 'totems', element: <FishingTotemsPage /> },
           { path: 'market', element: <FishingMarketPage /> },
           { path: 'loot', element: <FishingLootPage /> },
+        ],
+      },
+      {
+        path: '/modes/farming',
+        element: <FarmingLayout />,
+        children: [
+          { index: true, element: <Navigate to="/modes/farming/crops" replace /> },
+          { path: 'crops', element: <FarmingCropsPage /> },
+          { path: 'equipment', element: <FarmingEquipmentPage /> },
+          { path: 'foods', element: <FarmingFoodsPage /> },
+          { path: 'crafting', element: <FarmingCraftingPage /> },
         ],
       },
       { path: '/store', element: <StorePage /> },

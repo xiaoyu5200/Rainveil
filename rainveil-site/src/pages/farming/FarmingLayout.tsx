@@ -1,11 +1,13 @@
 import { NavLink, Outlet } from 'react-router'
 import { Container } from '../../components/ui/Container'
 import { Icon } from '../../components/ui/Icon'
+import { allPacks } from '../../content/packs'
 
 const sections = [
   { to: '/modes/farming/crops', label: '作物与土壤' },
   { to: '/modes/farming/equipment', label: '厨具与刀具' },
   { to: '/modes/farming/foods', label: '食谱图鉴' },
+  ...allPacks.map((p) => ({ to: `/modes/farming/${p.key}`, label: p.name })),
 ]
 
 function HeaderBlock() {

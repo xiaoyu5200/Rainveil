@@ -12,9 +12,9 @@ import { FarmingLayout } from './pages/farming/FarmingLayout'
 import { FarmingCropsPage } from './pages/farming/FarmingCropsPage'
 import { FarmingEquipmentPage } from './pages/farming/FarmingEquipmentPage'
 import { FarmingFoodsPage } from './pages/farming/FarmingFoodsPage'
+import { PackSection } from './pages/farming/PackSection'
 import { StorePage } from './pages/StorePage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import { PackPage } from './pages/packs/PackPage'
 
 export const routes = [
   {
@@ -42,10 +42,10 @@ export const routes = [
           { path: 'crops', element: <FarmingCropsPage /> },
           { path: 'equipment', element: <FarmingEquipmentPage /> },
           { path: 'foods', element: <FarmingFoodsPage /> },
+          { path: ':packKey', element: <PackSection /> },
         ],
       },
       { path: '/store', element: <StorePage /> },
-      { path: '/modes/:packKey', element: <PackPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

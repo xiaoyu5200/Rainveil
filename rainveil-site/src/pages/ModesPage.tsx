@@ -3,7 +3,6 @@ import { Container } from '../components/ui/Container'
 import { Section } from '../components/ui/Section'
 import { Badge } from '../components/ui/Badge'
 import { Icon } from '../components/ui/Icon'
-import { allPacks } from '../content/packs'
 
 export function ModesPage() {
   return (
@@ -71,47 +70,6 @@ export function ModesPage() {
             </span>
           </div>
         </Link>
-      </Section>
-
-      <Section
-        className="pb-16"
-        kicker="内容包"
-        title={
-          <span>
-            更多<em className="font-serif-accent italic">内容包</em>
-          </span>
-        }
-        subtitle="除农夫乐事外，服务器还整合了这些内容丰富的内容包。"
-      >
-        <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {allPacks.map((p) => {
-            const icon = p.items[0]?.texture ?? '/farming/item/cabbage.png'
-            return (
-              <Link
-                key={p.key}
-                to={`/modes/${p.key}`}
-                className="group flex items-center gap-4 rounded-check border border-edge bg-cloud p-5 shadow-whisper transition-shadow hover:shadow-float"
-              >
-                <img
-                  src={icon}
-                  alt={p.name}
-                  className="h-14 w-14 flex-none rounded-check border border-edge/70 bg-sky/60 object-contain p-1 [image-rendering:pixelated]"
-                />
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-semibold text-ink">{p.name}</h3>
-                    <Badge tone="citrus">{p.items.length} 物品</Badge>
-                  </div>
-                  <p className="mt-1 line-clamp-2 text-sm text-mist">{p.blurb}</p>
-                  <span className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-signal">
-                    查看
-                    <Icon name="arrow-right" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
       </Section>
     </Container>
   )

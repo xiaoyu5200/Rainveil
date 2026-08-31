@@ -1,5 +1,6 @@
 import type { CraftingRecipe } from '../../content/farmingRecipes'
-import { ITEMS, type ItemInfo } from '../../content/farmingRecipes'
+import type { ItemInfo } from '../../content/farmingRecipes'
+import { ALL_ITEMS } from '../../content/allItems'
 import { Badge } from '../../components/ui/Badge'
 import { Icon } from '../../components/ui/Icon'
 
@@ -77,7 +78,7 @@ function ResultSlot({ recipe, compact, catalog }: { recipe: CraftingRecipe; comp
 }
 
 /** 配方格子视图：原料格 → 箭头 → 结果（可独立嵌入卡片使用） */
-export function RecipeGrid({ recipe, compact, catalog = ITEMS }: { recipe: CraftingRecipe; compact?: boolean; catalog?: Catalog }) {
+export function RecipeGrid({ recipe, compact, catalog = ALL_ITEMS }: { recipe: CraftingRecipe; compact?: boolean; catalog?: Catalog }) {
   return (
     <div className="flex items-center justify-center gap-2.5">
       <InputGrid recipe={recipe} compact={compact} catalog={catalog} />
@@ -90,7 +91,7 @@ export function RecipeGrid({ recipe, compact, catalog = ITEMS }: { recipe: Craft
   )
 }
 
-export function RecipeCard({ recipe, catalog = ITEMS }: { recipe: CraftingRecipe; catalog?: Catalog }) {
+export function RecipeCard({ recipe, catalog = ALL_ITEMS }: { recipe: CraftingRecipe; catalog?: Catalog }) {
   return (
     <article className="flex flex-col rounded-check border border-edge bg-cloud p-5 shadow-whisper transition-shadow hover:shadow-float">
       <header className="mb-4 flex items-center gap-2">

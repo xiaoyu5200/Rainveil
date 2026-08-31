@@ -1,5 +1,6 @@
 import type { CookingRecipe } from '../../content/packTypes'
-import { ITEMS, type ItemInfo } from '../../content/farmingRecipes'
+import type { ItemInfo } from '../../content/farmingRecipes'
+import { ALL_ITEMS } from '../../content/allItems'
 import { Badge } from '../../components/ui/Badge'
 import { Icon } from '../../components/ui/Icon'
 
@@ -25,7 +26,7 @@ function IngCell({ id, catalog }: { id: string; catalog: Catalog }) {
 }
 
 /** 厨锅烹饪配方：2x3 原料格 → 箭头 → 厨锅 · 结果 */
-export function CookingPotCard({ recipe, catalog = ITEMS }: { recipe: CookingRecipe; catalog?: Catalog }) {
+export function CookingPotCard({ recipe, catalog = ALL_ITEMS }: { recipe: CookingRecipe; catalog?: Catalog }) {
   const result = catalog[recipe.result]
   const ing = recipe.ingredients.slice(0, 6)
   const potLabel = recipe.container ? catalog[recipe.container]?.name ?? '碗' : '厨锅'

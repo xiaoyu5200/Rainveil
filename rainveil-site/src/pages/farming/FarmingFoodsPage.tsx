@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { foodCategories, tools, knives } from '../../content/farming'
 import { RECIPES } from '../../content/farmingRecipes'
+import { FARMING_COOKING } from '../../content/packs'
 import { Badge } from '../../components/ui/Badge'
 import { Block, DishCard } from './_shared'
 import { RecipeCard } from './RecipeCard'
+import { CookingPotCard } from './CookingPotCard'
 
 type MethodFilter = '全部' | '厨锅烹饪' | '工作台合成'
 const FILTERS: MethodFilter[] = ['全部', '厨锅烹饪', '工作台合成']
@@ -71,6 +73,17 @@ export function FarmingFoodsPage() {
           </Block>
         )
       })}
+
+      <Block title="厨锅烹饪配方">
+        <p className="mb-4 -mt-2 text-sm text-mist">
+          这些家常菜需要放入厨锅（下方放置热源）烹饪；配方为原料格 + 容器 + 烹饪时间。
+        </p>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {FARMING_COOKING.map((c, idx) => (
+            <CookingPotCard key={c.result + idx} recipe={c} />
+          ))}
+        </div>
+      </Block>
 
       <Block title="加工食材与材料">
         <p className="mb-4 -mt-2 text-sm text-mist">

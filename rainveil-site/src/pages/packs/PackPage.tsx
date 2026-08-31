@@ -7,6 +7,7 @@ import { ITEMS } from '../../content/farmingRecipes'
 import type { ContentPack, PackItem } from '../../content/packTypes'
 import { getPack } from '../../content/packs'
 import { RecipeCard } from '../farming/RecipeCard'
+import { CookingPotCard } from '../farming/CookingPotCard'
 import { NotFoundPage } from '../NotFoundPage'
 
 const GROUP_LABEL: Record<string, string> = {
@@ -75,11 +76,25 @@ function PackBody({ pack }: { pack: ContentPack }) {
         <section>
           <h2 className="mb-2 text-xl font-semibold text-ink">合成表</h2>
           <p className="mb-4 -mt-2 text-sm text-mist">
-            该内容包的主要合成配方（工作台/熔炉/营火/锻造台）。
+            该内容包的主要工作台/熔炉/营火/锻造台配方。
           </p>
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {pack.recipes.map((r) => (
               <RecipeCard key={r.id} recipe={r} catalog={catalog} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {pack.cooking && pack.cooking.length > 0 ? (
+        <section>
+          <h2 className="mb-2 text-xl font-semibold text-ink">厨锅烹饪</h2>
+          <p className="mb-4 -mt-2 text-sm text-mist">
+            将原料放入厨锅（下方需热源）即可烹饪出这些家常菜。
+          </p>
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {pack.cooking.map((c, idx) => (
+              <CookingPotCard key={c.result + idx} recipe={c} catalog={catalog} />
             ))}
           </div>
         </section>

@@ -13,6 +13,19 @@ export interface PackItem {
   desc?: string
 }
 
+export interface CookingRecipe {
+  /** 结果物品 id */
+  result: string
+  /** 中文名（用结果物品名） */
+  name: string
+  /** 容器（碗/玻璃瓶等） */
+  container: string
+  /** 烹饪时长（tick） */
+  cookingtime: number
+  /** 原料（已解析为物品 id 或未知 tag 原文） */
+  ingredients: string[]
+}
+
 export interface ContentPack {
   /** 路由 slug，如 corn */
   key: string
@@ -26,4 +39,6 @@ export interface ContentPack {
   sections: { key: string; label: string; desc: string; group: string[] }[]
   items: PackItem[]
   recipes: CraftingRecipe[]
+  /** 厨锅烹饪配方 */
+  cooking?: CookingRecipe[]
 }

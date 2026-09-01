@@ -1,5 +1,9 @@
+import { createElement } from 'react'
 import { describe, it, expect } from 'vitest'
+import { render } from '@testing-library/react'
 import { crops, wildCrops, tools, knives, foodCategories, craftingRecipes, soil } from './farming'
+import { RECIPES } from './farmingRecipes'
+import { RecipeGrid } from '../pages/farming/RecipeCard'
 
 describe('farming content', () => {
   it('has 4 crops, each with a texture and a seed (except onion)', () => {
@@ -38,6 +42,17 @@ describe('farming content', () => {
       expect(r.grid.some((g) => g !== null)).toBe(true)
       expect(r.station).toBeTruthy()
     })
+  })
+
+  it('shows knife recipes as a two-slot row', () => {
+    const recipe = RECIPES.find((r) => r.id === 'farmersdelight:flint_knife')
+    expect(recipe).toBeTruthy()
+
+    const { container } = render(createElement(RecipeGrid, { recipe: recipe!, compact: true }))
+    const slotCells = container.querySelectorAll('[data-slot]')
+
+    expect(container.querySelector('[data-crafting-layout="two-slot"]')).not.toBeNull()
+    expect(slotCells).toHaveLength(2)
   })
 
   it('has soil/compost info', () => {

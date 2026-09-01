@@ -8,14 +8,14 @@ type Catalog = Record<string, ItemInfo>
 
 function SlotCell({ id, size = 'h-12 w-12', catalog }: { id: string | null; size?: string; catalog: Catalog }) {
   if (!id) {
-    return <div className={`${size} flex-none rounded-check border border-dashed border-slate-400/60 bg-slate-200/70`} />
+    return <div data-slot="empty" className={`${size} flex-none rounded-check border border-dashed border-slate-400/60 bg-slate-200/70`} />
   }
   const info = catalog[id]
   if (!info) {
-    return <div className={`${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-1`} />
+    return <div data-slot={id} className={`${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-1`} />
   }
   return (
-    <div className={`group relative ${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-0.5`}>
+    <div data-slot={id} className={`group relative ${size} flex-none rounded-check border border-slate-400/50 bg-slate-300 p-0.5`}>
       <img
         src={info.texture}
         alt={info.name}
@@ -32,8 +32,19 @@ function SlotCell({ id, size = 'h-12 w-12', catalog }: { id: string | null; size
 function InputGrid({ recipe, compact, catalog }: { recipe: CraftingRecipe; compact?: boolean; catalog: Catalog }) {
   const size = compact ? 'h-9 w-9' : 'h-12 w-12'
   if (recipe.type === 'crafting') {
+    const filledSlots = recipe.grid.filter((slot): slot is string => slot !== null)
+    const isTwoSlotCrafting = filledSlots.length === 2 && recipe.grid.slice(2).every((slot) => slot === null)
+
+    if (isTwoSlotCrafting) {
+      return (
+        <div data-crafting-layout="two-slot" className="grid grid-cols-2 gap-1.5">
+          {recipe.grid.map((slot, i) => (slot === null ? null : <SlotCell key={`${slot}-${i}`} id={slot} size={size} catalog={catalog} />)).filter(Boolean)}
+        </div>
+      )
+    }
+
     return (
-      <div className="grid grid-cols-3 gap-1.5">
+      <div data-crafting-layout="full-grid" className="grid grid-cols-3 gap-1.5">
         {Array.from({ length: 9 }, (_, i) => (
           <SlotCell key={i} id={recipe.grid[i] ?? null} size={size} catalog={catalog} />
         ))}
